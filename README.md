@@ -1,3 +1,5 @@
+[![Deploy with Dokploy](https://img.shields.io/badge/Deploy_with-Dokploy-black)](https://dealenx.github.io/Dokployfile/dealenx/vpn-xray-dokploy)
+
 # XRay VLESS VPN
 
 Два варианта VPN для обхода блокировок:
@@ -12,6 +14,12 @@
 ## Вариант 1: Cloudflare + Dokploy
 
 VPN через Traefik + Cloudflare CDN.
+
+### Деплой одной кнопкой (Dokploy)
+
+Шаблон: [`Dokployfile.yml`](Dokployfile.yml) — генерирует импорт-payload для Dokploy из этого репозитория.
+
+Открой https://dealenx.github.io/Dokployfile/dealenx/vpn-xray-dokploy — получишь Base64-payload, вставь в Dokploy (**Templates** → **Import**). Файлы шаблона: `Dokployfile.yml`, `docker-compose.dokploy.yml`, `template.toml`, `config/` в `.dokploy/config.template.json`.
 
 ### Деплой (готовый образ из GitHub)
 

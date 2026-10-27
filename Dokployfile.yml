@@ -1,0 +1,12 @@
+version: "1"
+meta:
+  slug: "xray-vless"
+  name: "XRay VLESS VPN"
+  version: "1.0.0"
+  description: "VLESS VPN via WebSocket+TLS through Traefik/Cloudflare, for Dokploy"
+  tags: ["vpn", "proxy", "xray", "vless", "dokploy"]
+  links:
+    github: "https://github.com/dealenx/vpn-xray-dokploy"
+template:
+  compose: "docker-compose.dokploy.yml"
+  config: "template.toml"

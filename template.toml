@@ -1,0 +1,15 @@
+[variables]
+main_domain = "${domain}"
+ws_path = "/ws"
+
+[config]
+env = [
+  "UUID=${uuid}",
+  "WS_PATH=${ws_path}",
+  "DOMAIN=${main_domain}",
+]
+
+[[config.domains]]
+serviceName = "xray"
+port = 8080
+host = "${main_domain}"
