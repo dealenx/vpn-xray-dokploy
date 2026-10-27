@@ -21,6 +21,8 @@ VPN через Traefik + Cloudflare CDN.
 
 Открой https://dealenx.github.io/Dokployfile/dealenx/vpn-xray-dokploy — получишь Base64-payload, вставь в Dokploy (**Templates** → **Import**). Файлы шаблона: `Dokployfile.yml`, `docker-compose.dokploy.yml`, `template.toml`, `config/` в `.dokploy/config.template.json`.
 
+После импорта в **Environment** компоуза появится `VLESS_URL` — готовая ссылка `vless://<uuid>@<домен>:443?...` для клиента (домен Dokploy генерирует сам, UUID — `uuidgen`-подобный хелпер шаблона). Скопируй её и вставь в v2rayNG/Nekoray.
+
 ### Деплой (готовый образ из GitHub)
 
 `docker-compose.yml` использует образ из ghcr.io, собранный Actions:

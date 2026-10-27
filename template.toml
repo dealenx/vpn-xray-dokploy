@@ -1,12 +1,14 @@
 [variables]
 main_domain = "${domain}"
 ws_path = "/ws"
+vpn_uuid = "${uuid}"
 
 [config]
 env = [
-  "UUID=${uuid}",
+  "UUID=${vpn_uuid}",
   "WS_PATH=${ws_path}",
   "DOMAIN=${main_domain}",
+  "VLESS_URL=vless://${vpn_uuid}@${main_domain}:443?encryption=none&security=tls&type=ws&path=${ws_path}#Dokploy-VPN",
 ]
 
 [[config.domains]]
