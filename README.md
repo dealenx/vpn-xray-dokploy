@@ -13,7 +13,43 @@
 
 VPN через Traefik + Cloudflare CDN.
 
-### Деплой
+### Деплой (готовый образ из GitHub)
+
+`docker-compose.yml` использует образ из ghcr.io, собранный Actions:
+
+```yaml
+image: ghcr.io/dealenx/vpn-xray-dokploy:latest
+```
+
+Либо для вставки в compose:
+
+```yaml
+services:
+  xray:
+    image: ghcr.io/dealenx/vpn-xray-dokploy:latest
+    restart: unless-stopped
+    environment:
+      - UUID=${UUID}
+      - WS_PATH=${WS_PATH:-/ws}
+      - DOMAIN=${DOMAIN}
+    volumes:
+      - ./config/config.template.json:/etc/xray/config.template.json:ro
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.xray.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.xray.entrypoints=websecure"
+      - "traefik.http.routers.xray.tls=true"
+      - "traefik.http.routers.xray.tls.certresolver=letsencrypt"
+      - "traefik.http.services.xray.loadbalancer.server.port=8080"
+
+networks:
+  dokploy-network:
+    external: true
+```
+
+### Деплой из исходников
 
 1. В Dokploy: **Create** → **Compose** → укажи этот репозиторий
 2. В **Environment** добавь:

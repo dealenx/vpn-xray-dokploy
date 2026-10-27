@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   xray:
-    build: .
+    image: ghcr.io/dealenx/vpn-xray-dokploy:latest
     container_name: xray-vless
     restart: unless-stopped
     environment:
