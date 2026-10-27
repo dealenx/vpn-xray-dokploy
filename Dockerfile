@@ -15,4 +15,6 @@ RUN ARCH=$(uname -m) && \
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+COPY config/config.template.json /etc/xray/config.template.json
+
 ENTRYPOINT ["/entrypoint.sh"]

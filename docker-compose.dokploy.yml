@@ -2,8 +2,6 @@ services:
   xray:
     image: ghcr.io/dealenx/vpn-xray-dokploy:latest
     restart: unless-stopped
-    volumes:
-      - ./.dokploy/config.template.json:/etc/xray/config.template.json:ro
     environment:
       - UUID=${UUID}
       - WS_PATH=${WS_PATH:-/ws}

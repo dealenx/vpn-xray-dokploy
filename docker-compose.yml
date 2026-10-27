@@ -9,8 +9,6 @@ services:
       - UUID=${UUID}
       - WS_PATH=${WS_PATH:-/ws}
       - DOMAIN=${DOMAIN}
-    volumes:
-      - ./config/config.template.json:/etc/xray/config.template.json:ro
     networks:
       - dokploy-network
     labels:

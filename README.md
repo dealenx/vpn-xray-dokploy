@@ -19,9 +19,11 @@ VPN через Traefik + Cloudflare CDN.
 
 Шаблон: [`Dokployfile.yml`](Dokployfile.yml) — генерирует импорт-payload для Dokploy из этого репозитория.
 
-Открой https://dealenx.github.io/Dokployfile/dealenx/vpn-xray-dokploy — получишь Base64-payload, вставь в Dokploy (**Templates** → **Import**). Файлы шаблона: `Dokployfile.yml`, `docker-compose.dokploy.yml`, `template.toml`, `config/` в `.dokploy/config.template.json`.
+Открой https://dealenx.github.io/Dokployfile/dealenx/vpn-xray-dokploy — получишь Base64-payload, вставь в Dokploy (**Templates** → **Import**). Файлы шаблона: `Dokployfile.yml`, `docker-compose.dokploy.yml`, `template.toml`.
 
 После импорта в **Environment** компоуза появится `VLESS_URL` — готовая ссылка `vless://<uuid>@<домен>:443?...` для клиента (домен Dokploy генерирует сам, UUID — `uuidgen`-подобный хелпер шаблона). Скопируй её и вставь в v2rayNG/Nekoray.
+
+Конфиг-шаблон запечён в образ (`/etc/xray/config.template.json`) — bind-mount'ы не нужны, шаблон самодостаточен.
 
 ### Деплой (готовый образ из GitHub)
 
@@ -42,8 +44,6 @@ services:
       - UUID=${UUID}
       - WS_PATH=${WS_PATH:-/ws}
       - DOMAIN=${DOMAIN}
-    volumes:
-      - ./config/config.template.json:/etc/xray/config.template.json:ro
     networks:
       - dokploy-network
     labels:
